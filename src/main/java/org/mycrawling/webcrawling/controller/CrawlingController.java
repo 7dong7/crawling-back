@@ -21,6 +21,7 @@ public class CrawlingController {
     @GetMapping("/api/crawl")
     public ResponseEntity<String> crawl() {
         log.info("웹 크롤링 실행");
+        crawlingService.crawlWebsite();
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body("응답성공");
