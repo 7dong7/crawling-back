@@ -21,6 +21,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -49,6 +50,8 @@ dependencies {
     // 크롤링 Jsoup
     implementation 'org.jsoup:jsoup:1.17.2' // 최신 버전 확인
 
+    // NLP(자연어처리) - 한국어 형태소 분석기 komoran 사용
+    implementation 'com.github.shin285:KOMORAN:3.3.9'
 }
 
 tasks.named('test') {
