@@ -6,15 +6,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.mycrawling.webcrawling.domain.dto.News;
-import org.mycrawling.webcrawling.domain.entity.Crawl;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 @Service
 @Slf4j
@@ -53,7 +50,7 @@ public class CrawlingService {
         }
     }
 
-    @Async
+    @Async("taskExecutor")
     public CompletableFuture<List<News>> crawlingNaverNewsAsy() {
         log.info("crawlingNaverNewsAsy 실행");
         try {
@@ -119,7 +116,7 @@ public class CrawlingService {
         }
     }
 
-    @Async
+    @Async("taskExecutor")
     public CompletableFuture<List<News>> crawlingDaumNewsAsy() {
         log.info("crawlingDaumNewsAsy 실행");
         try {
@@ -185,7 +182,7 @@ public class CrawlingService {
         }
     }
 
-    @Async
+    @Async("taskExecutor")
     public CompletableFuture<List<News>> crawlingGoogleNewsAsy() {
         log.info("crawlingGoogleNewsAsy 실행");
         try {
@@ -253,7 +250,7 @@ public class CrawlingService {
         }
     }
 
-    @Async
+    @Async("taskExecutor")
     public CompletableFuture<List<News>> crawlingNateNewsAsy() {
         log.info("crawlingNateNewsAsy 실행");
         try {

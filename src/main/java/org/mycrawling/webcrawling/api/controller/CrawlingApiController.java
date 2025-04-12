@@ -45,14 +45,10 @@ public class CrawlingApiController {
 //        List<News> nateNews = crawlingService.crawlingNateNews();
 
             // ==== 비동기 처리 방식 ====
-        CompletableFuture<List<News>> naverNewsFuture = crawlingService.crawlingNaverNewsAsy()
-                .whenComplete((result, ex) -> log.info("naver 크롤링: {}", System.currentTimeMillis() - startTime));
-        CompletableFuture<List<News>> daumNewsFuture = crawlingService.crawlingDaumNewsAsy()
-                .whenComplete((result, ex) -> log.info("daum 크롤링: {}", System.currentTimeMillis() - startTime));;
-        CompletableFuture<List<News>> googleNewsFuture = crawlingService.crawlingGoogleNewsAsy()
-                .whenComplete((result, ex) -> log.info("google 크롤링: {}", System.currentTimeMillis() - startTime));;
-        CompletableFuture<List<News>> nateNewsFuture = crawlingService.crawlingNateNewsAsy()
-                .whenComplete((result, ex) -> log.info("nate 크롤링: {}", System.currentTimeMillis() - startTime));;
+        CompletableFuture<List<News>> naverNewsFuture = crawlingService.crawlingNaverNewsAsy();
+        CompletableFuture<List<News>> daumNewsFuture = crawlingService.crawlingDaumNewsAsy();
+        CompletableFuture<List<News>> googleNewsFuture = crawlingService.crawlingGoogleNewsAsy();
+        CompletableFuture<List<News>> nateNewsFuture = crawlingService.crawlingNateNewsAsy();
 
         // 모든 비동기 작업이 완료될때 까지 기다린다
         CompletableFuture.allOf(naverNewsFuture, daumNewsFuture, googleNewsFuture, nateNewsFuture);
@@ -80,10 +76,10 @@ public class CrawlingApiController {
          *          NNG 일반명사 만 추출 후 빈도수 계산
          */
         for (News news : allNews) {
-            System.out.println("======================= 뉴스 하나 ==============");
+//            System.out.println("======================= 뉴스 하나 ==============");
             KomoranResult analyze = komoran.analyze(news.getTitle()); // 분석할 문장 넣기
-            String plainText = analyze.getPlainText();
-            System.out.println("plainText = " + plainText);
+//            String plainText = analyze.getPlainText();
+//            System.out.println("plainText = " + plainText);
             List<Token> tokenList = analyze.getTokenList();
             for (Token token : tokenList) {
                 //  고유 명사와 일반 명사 만 추출 빈도수

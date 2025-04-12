@@ -56,7 +56,8 @@ public class SecurityConfig {
                 authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 HttpMethod.GET,
-                                "/api/crawl"
+                                "/api/crawl",
+                                "/api/crawlTest"
                         ).permitAll()
                 );
 

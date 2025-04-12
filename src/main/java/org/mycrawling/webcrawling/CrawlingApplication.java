@@ -16,7 +16,7 @@ public class CrawlingApplication {
         SpringApplication.run(CrawlingApplication.class, args);
     }
 
-    @Bean
+    @Bean(name = "taskExecutor")
     public Executor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(4); // 기본 스레디의 수 (일단 크롤링 포털 수에 맞게 설정)
